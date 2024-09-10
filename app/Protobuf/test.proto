@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package services;
+
+option php_namespace = "GrpcServices\\Test\\Messages";
+option php_metadata_namespace = "GrpcServices\\Test";
+
+service Test {
+    rpc Ping (PingMessage) returns (PingMessage) {
+    }
+}
+
+message PingMessage {
+    string msg = 1;
+}

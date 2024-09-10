@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package services;
+
+option php_namespace = "GrpcServices\\User\\Messages";
+option php_metadata_namespace = "GrpcServices\\User";
+
+service User {
+    rpc GetUser (GetUserMessage) returns (UserMessage) {
+    }
+}
+
+message GetUserMessage {
+    int64 id = 1;
+}
+
+message UserMessage {
+    int64 id = 1;
+    int32 city_id = 2;
+    string name = 3;
+    string last_name = 4;
+    string sur_name = 5;
+    bool is_active = 6;
+}

@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+    rr:
+        build:
+            dockerfile: ./deployment/docker/roadrunner/DockerFile
+        ports:
+            - '9001:9001' # шарим порт 9001
+        user: '1000:1000' # работа от текущего юзера в системе
+        volumes:
+            - .:/app
+        networks:
+            - default
+
+    php-cli:
+        build:
+            dockerfile: ./deployment/docker/php-cli/Dockerfile
+        user: '1000:1000'
+        environment:
+            PHP_IDE_CONFIG: 'serverName=rr'
+        tty: true
+        volumes:
+            - .:/app
+        networks:
+            - default
